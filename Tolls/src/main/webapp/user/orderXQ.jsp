@@ -87,11 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 		<td colspan="10">  您已预约(通过时间)通过(出口收费站)，请按照预约时间通行，超过2小时将自动取消</td>
 		</tr>
-		
-				  	
-	 
-	  
-		
+
 		</table>
 				</div>
 			</div>
