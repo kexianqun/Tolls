@@ -1,0 +1,316 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/* reset */
+
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*end reset*/
+.top {float:right;}
+
+#blank{display:none;}
+table{border:3px;width:750;height:120;cellspacing:0;cellpadding:3;align:center}
+html,body{
+	padding:0;
+	margin:0;
+	background:#fff;
+font-family: 'Roboto', sans-serif;
+ }
+body a{
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+	text-decoration:none;
+}
+body a:hover {
+	text-decoration: none;
+}
+
+body a:focus, a:hover {
+	text-decoration: none;
+}
+input[type="email"],input[type="text"],input[type=password],
+input[type="button"],input[type="submit"],textarea{
+font-family: 'Roboto', sans-serif;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+h1,h2,h3,h4,h5,h6{
+	margin:0;	
+	padding:0;
+font-family: 'Roboto', sans-serif;
+	letter-spacing:1px;
+}	
+p{
+	margin:0;
+	padding:0;
+	letter-spacing:1px;
+font-family: 'Roboto', sans-serif;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+/*-- //Reset-Code --*/
+body {
+    background: url(../images/b4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100vh;
+}
+  .appointment-w3 {
+    width: 52%;
+    height:42%;
+    margin: 30px auto 30px;
+    background-color:#fff;
+    padding: 40px 40px;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+}
+.appointment-www {
+	align:center;
+    width: 58%;
+    height:42%;
+    margin: 30px auto 30px;
+    background-color:#fff;
+    padding: 40px 40px;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+}
+.appointment-j3 {
+	align:center;
+    width: 78%;
+    height:52%;
+    margin: 30px auto 30px;
+    background-color:#fff;
+    padding: 40px 40px;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+}
+h1{  padding-top: 31px;}
+h1.header-w3ls {
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 11px;
+    text-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+}
+.personal h2,
+.information h3,
+.passport h3{
+  color:#000;
+text-align:center;
+margin:.5em 0em;
+letter-spacing:3px;
+}
+	.main{ display: -webkit-flex;
+           display: flex;	/* Safari */
+    -webkit-justify-content: space-between; /* Safari 6.1+ */
+    justify-content: space-between;}
+	.form-right-w3ls,.form-left-w3l{  flex-basis: 45%;
+	 -webkit-flex-basis: 45%;
+	}	
+ 
+ 			
+
+input[type="submit"] {
+	    border-radius:0px;
+    text-transform: uppercase;
+       background: #FFC107;
+    color: #000000;
+    padding:11px 15px;
+    border: none;
+    font-size: 17px;
+    outline: none;
+    width: 100%;
+    letter-spacing: 1px;
+    margin:20px 0px;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+ 
+	input[type="submit"]:hover {
+    color: #fff;
+    background: #000;
+}
+.copy{padding-bottom:30px;}
+.copy p{
+    margin:0em;
+    text-align: center;
+    color: white;
+    letter-spacing: 3px;
+}	
+.copy p a{
+	  color:#33e8ff;
+	  text-decoration:none;
+      }	 
+.copy p a:hover{color:#fff;}
+
+
+/*--responsive--*/
+
+.copy p {
+    font-size: 17px;
+}
+
+
+.personal h2, .information h3, .passport h3 {
+    font-size: 32px;
+}
+.copy p {
+    font-size: 16px;
+}
+
+
+	.personal h2, .information h3, .passport h3 {
+    font-size: 30px;
+	}
+	.copy p {
+    font-size: 14px;
+	}
+
+
+
+@media(max-width:1366px){
+	.appointment-w3 {
+    width: 52%;
+	}
+}
+@media(max-width:1280px){
+	.appointment-w3 {
+    width: 55%;
+}
+}
+@media(max-width:1080px){
+	.appointment-w3 {
+    width: 60%;
+}
+}
+@media(max-width:1050px){
+	.appointment-w3 {
+    width: 63%;
+}
+}
+@media(max-width:1024px){
+	
+	.appointment-w3 {
+    padding: 24px 35px;
+	}
+	.personal h2, .information h3, .passport h3 {
+    margin: .4em 0;
+	}
+}
+@media(max-width:991px){
+	.appointment-w3 {
+    width: 68%;
+}
+}
+
+  
+
+@media(max-width:800px){
+	.appointment-w3 {
+    width: 72%;
+}
+@media(max-width:768px){
+	.appointment-w3 {
+    width: 77%;
+}
+input[type="submit"] {
+    font-size: 16px;
+}
+}
+@media(max-width:767px){
+	
+	.appointment-w3 {
+    padding: 21px 35px;
+}
+}
+@media(max-width:736px){
+	.appointment-w3 {
+    margin: 22px auto 30px;
+	}
+	
+}
+@media(max-width:667px){
+	
+.appointment-w3 {
+    padding: 21px 28px;
+	width: 79%;
+}
+.copy p {
+    letter-spacing: 2px;
+}
+}
+
+
+
+
+.copy p {
+    line-height: 28px;
+    padding: 0px 20px;
+}
+}
+@media(max-width:568px){
+	.personal h2, .information h3, .passport h3 {
+    font-size: 28px;
+}
+
+@media(max-width:480px){
+.main {
+	flex-direction: column;
+   -webkit-flex-direction:  column;
+}
+
+.appointment-w3 {
+    margin: 13px auto 30px;
+}
+}
+@media(max-width:440px){
+	.personal h2, .information h3, .passport h3 {
+    font-size: 26px;
+}
+	input[type="submit"] {
+    margin: 14px 0px;
+	}
+}
+@media(max-width:414px){
+.appointment-w3 {
+    width: 74%;
+}
+}
+
+
+
+@media(max-width:320px){
+	.personal h2, .information h3, .passport h3 {
+    letter-spacing: 1px;
+	    font-size: 24px;
+}
+
+/*--//responsive--*/

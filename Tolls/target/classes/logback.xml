@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- 定义日志文件 输入位置 -->
+    <property name="log_dir" value="logs"/>
+
+    <appender name="tollslog"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_dir}/tolls.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log_dir}/log_back/tolls.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="spring"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_dir}/spring.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_dir}/log_back/spring-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="DEBUG" additivity="false">
+        <appender-ref ref="spring"/>
+    </logger>
+
+    <logger name="com.cpit" level="DEBUG" additivity="false">
+        <appender-ref ref="tollslog"/>
+    </logger>
+
+    <root level="INFO">
+    </root>
+</configuration>
