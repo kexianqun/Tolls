@@ -1,8 +1,8 @@
 package com.wh.tolls.service;
 
-import java.util.List;
-
 import com.wh.tolls.entity.carorder;
+
+import java.util.List;
 
 public interface CarOrderService {
 	int deleteByPrimaryKey(Integer userId);
@@ -18,4 +18,6 @@ public interface CarOrderService {
     int updateByPrimaryKey(carorder record);
 
     List<carorder> selectAll();
+
+    List<carorder> selectByUser(int userId);
 }

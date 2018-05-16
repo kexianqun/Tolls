@@ -1,13 +1,12 @@
 package com.wh.tolls.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.wh.tolls.dao.carorderMapper;
 import com.wh.tolls.entity.carorder;
 import com.wh.tolls.service.CarOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 @Service
 public class CarOrderServiceImpl implements CarOrderService{
 
@@ -54,6 +53,12 @@ public class CarOrderServiceImpl implements CarOrderService{
 	public List<carorder> selectAll() {
 		// TODO Auto-generated method stub
 		return carorderMapper.selectAll();
+	}
+
+	@Override
+	public List<carorder> selectByUser(int userId) {
+		// TODO Auto-generated method stub
+		return carorderMapper.selectByUser(userId);
 	}
 
 }

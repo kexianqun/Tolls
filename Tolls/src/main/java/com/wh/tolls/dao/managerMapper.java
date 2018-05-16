@@ -1,9 +1,11 @@
 package com.wh.tolls.dao;
 
+import com.wh.tolls.entity.manager;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-import com.wh.tolls.entity.manager;
-
+@Component
 public interface managerMapper {
     int deleteByPrimaryKey(Integer managerId);
 

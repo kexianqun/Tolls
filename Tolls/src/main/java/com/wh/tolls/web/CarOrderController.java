@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,19 +33,36 @@ public class CarOrderController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/show")
-	public String show(){
-		List<carorder> list = carorderService.selectAll();
-		request.getSession().setAttribute("list", list);
-		return "show";
+	@ResponseBody
+    @RequestMapping("/showByoid")
+    public ResultMap showByOId(@RequestParam("orderId") int orderId){
+        ResultMap resultMap = new ResultMap();
+        carorder tcarorder = carorderService.selectByPrimaryKey(orderId);
+        if(tcarorder!=null){
+            logger.info("查询出该用户预约记录："+tcarorder.toString());
+            resultMap.addData("carorder",tcarorder);
+        }else{
+            logger.info("未查询出该用户的预约记录");
+            resultMap.addError("未查询出该用户的预约记录");
+        }
+        return resultMap;
+    }
+
+    @ResponseBody
+	@RequestMapping("/showByuser")
+	public ResultMap showByuserId(@RequestParam("userid") int userid){
+		ResultMap resultMap = new ResultMap();
+		List<carorder> carorders = carorderService.selectByUser(userid);
+		if(carorders.size()>0){
+			logger.info("查询出该用户的预约记录条数："+carorders.size());
+			resultMap.addData("carorder",carorders);
+		}else{
+			logger.info("未查询出该用户的预约记录");
+			resultMap.addError("未查询出该用户的预约记录");
+		}
+		return resultMap;
 	}
-	
-	@RequestMapping("/del")
-	public String del(int id){
-		carorderService.deleteByPrimaryKey(id);
-		show();
-		return "show";
-	}
+
 
 	@ResponseBody
 	@RequestMapping("/insert")
@@ -60,9 +78,11 @@ public class CarOrderController {
 			carorder.setUserId(userid);
 			carorder.setOrdertime(ordertime);
 			int a = carorderService.insert(carorder);
+			int id = carorder.getOrderId();
+			logger.info("预约后的id："+id);
 			if(a==1){
 			    logger.info("预约成功--");
-                resultMap.addData("STATE","预约成功");
+                resultMap.addData("carorder",carorder);
             }else{
                 logger.info("预约失败--");
                 resultMap.addError("预约失败");

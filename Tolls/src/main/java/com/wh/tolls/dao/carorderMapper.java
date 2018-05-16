@@ -1,9 +1,10 @@
 package com.wh.tolls.dao;
 
-import java.util.List;
-
 import com.wh.tolls.entity.carorder;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
 public interface carorderMapper {
     int deleteByPrimaryKey(Integer orderId);
 
@@ -18,4 +19,7 @@ public interface carorderMapper {
     int updateByPrimaryKey(carorder record);
     
     List<carorder> selectAll();
+
+    List<carorder> selectByUser(int userId);
+
 }

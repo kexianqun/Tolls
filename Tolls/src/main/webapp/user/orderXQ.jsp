@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<h1 class="header-w3ls" color="#fff">
 	高速公路绿通车收费站预约通行系统</h1>
-      <table1 class="top" align="right">
+      <table class="top" align="right">
        <tr>
          <td><a href="../index.jsp">首页</a>|</td>
          <td><a href="../user/login.jsp">用户登录</a>|</td>
@@ -53,9 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h2 align="center">Order Details</h2>
 				<br><br>
 				<div class="main">
-					<table border="1px solid black" cellspacing="0" cellpadding="3" align="center" bordercolor="pink">
-		
-	
+	    <table border="1px solid black" cellspacing="0" cellpadding="3" align="center" bordercolor="pink" id="order_tab">
 		<tr>
 			<td>用&nbsp;户&nbsp;名</td>
 			<td>车&nbsp;牌&nbsp;号</td>
@@ -68,26 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>图&nbsp;&nbsp;&nbsp;&nbsp;片</td>
 			<td></td>
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>
-			   <input type="button" value="确定"><br><br>
-			   <input type="button" value="修改"><br><br>
-			   <input type="button" value="取消"></td>
-		</tr>
-		
-		<tr>
-		<td colspan="10">  您已预约(通过时间)通过(出口收费站)，请按照预约时间通行，超过2小时将自动取消</td>
-		</tr>
-
 		</table>
 				</div>
 			</div>
@@ -98,6 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- js -->
 	<script type='text/javascript' src='../js/jquery-2.2.3.min.js'></script>
+	<script type='text/javascript' src='../js/orderXQ.js'></script>
 	<!-- //js -->
 	<!-- Calendar -->
 	<script src="../js/jquery-ui.js"></script>

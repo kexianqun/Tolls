@@ -1,9 +1,11 @@
 package com.wh.tolls.dao;
 
+import com.wh.tolls.entity.news;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-import com.wh.tolls.entity.news;
-
+@Component
 public interface newsMapper {
     int deleteByPrimaryKey(Integer newsId);
 

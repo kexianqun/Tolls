@@ -1,7 +1,16 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="com.wh.tolls.entity.user" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	user user = (com.wh.tolls.entity.user) session.getAttribute("user");
+	int userid ;
+	String uid = "";
+	if(user!=null){
+		userid = user.getUserId();
+		uid = String.valueOf(userid);
+	}else{
+		response.sendRedirect(basePath+"/index.jsp");
+	}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -30,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
+<input type="hidden" id="userid" value="<%=uid%>">
 	<h1 class="header-w3ls" color="#fff">
 	高速公路绿通车收费站预约通行系统</h1>
       <table align="right">
@@ -37,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <td><a href="../index.jsp">首页</a>|</td>
          <td><a href="../user/login.jsp">用户登录</a>|</td>
 		 <td><a href="../user/register.jsp">注册</a>|</td>
+         <td><a href="../user/historyInfo.jsp">预约记录</a>|</td>
          <td><a href="../manager/login.jsp">管理员登录</a></td>
        </tr>
       </table>

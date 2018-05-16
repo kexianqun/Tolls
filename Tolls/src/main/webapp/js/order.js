@@ -1,5 +1,6 @@
 function addorder() {
     //获取页面数据
+    var userid = $('#userid').val();
     var username = $('#username').val();
     var plateNumber = $('#plateNumber').val();
     var intoll = $('#intoll').val();
@@ -50,8 +51,11 @@ function addorder() {
                 var lenth = data.errorList.length;
                 if(lenth == 0){
                     //预约成功
-                    alert(data.tradeMap.STATE);
-                    window.location.href='/tolls/user/orderXQ.jsp';
+                    var order = data.tradeMap.carorder;
+                    console.log(order);
+                    var oid = order.orderId;
+                    alert("预约成功");
+                    window.location.href='/tolls/user/orderXQ.jsp?'+'txt='+oid;
                 }else{
                     alert(data.errorList[0]);
                 }

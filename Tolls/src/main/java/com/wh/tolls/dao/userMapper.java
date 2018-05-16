@@ -1,9 +1,11 @@
 package com.wh.tolls.dao;
 
+import com.wh.tolls.entity.user;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-import com.wh.tolls.entity.user;
-
+@Component
 public interface userMapper {
     int deleteByPrimaryKey(Integer userId);
 
