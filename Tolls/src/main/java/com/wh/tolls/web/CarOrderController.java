@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -89,6 +86,21 @@ public class CarOrderController {
             }
 		}else{
 			resultMap.addError("系统无此用户，无法预约");
+		}
+		return resultMap;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = ("/delete"),method = RequestMethod.POST)
+	public ResultMap orderDelete(@RequestParam("orderId") int orderId){
+		ResultMap resultMap = new ResultMap();
+		int i = carorderService.deleteByPrimaryKey(orderId);
+		System.out.println("删除之后的i："+i);
+		if(i!=0){
+			logger.info("取消预约成功");
+			resultMap.addData("STATE","取消预约成功");
+		}else{
+			resultMap.addError("取消预约失败");
 		}
 		return resultMap;
 	}

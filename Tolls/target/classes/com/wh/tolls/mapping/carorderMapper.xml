@@ -31,7 +31,7 @@
     delete from carorder
     where order_id = #{orderId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wh.tolls.entity.carorder" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.wh.tolls.entity.carorder" >
     insert into carorder (order_id, user_id, username, 
       lpNumber, tel, en_tollS, 
       ex_tollS, ordertime, passtime, 
@@ -203,5 +203,12 @@
     select 
     <include refid="Base_Column_List" />
     from carorder
-  </select>  
+  </select>
+
+  <select id="selectByUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from carorder
+    where user_id = #{user_id,jdbcType=INTEGER} and checkState ='待审核';
+  </select>
 </mapper>

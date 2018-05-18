@@ -23,7 +23,7 @@ $(function () {
                 var passtime = mList.passtime;
                 var exTolls = mList.exTolls;
                 tr1 = '<td>'+ mList.username+'</td><td>'+ mList.lpnumber+'</td><td>'+ mList.enTolls+'</td><td>'+ mList.exTolls+'</td><td>'+ mList.ordertime+'</td>' +
-                    '<td>'+ mList.passtime+'</td><td>'+ mList.tel+'</td><td>'+ mList.description+'</td><td>'+ mList.addpicture+'</td>'+'<td><a href="javascript:void(0)" >取消预约</a></td>';
+                    '<td>'+ mList.passtime+'</td><td>'+ mList.tel+'</td><td>'+ mList.description+'</td><td>'+ mList.addpicture+'</td>'+'<td><a href="javascript:void(0)" onclick="cancelOrder('+mList.orderId+')">取消预约</a></td>';
                 var tr2 = '<td colspan="10">您已预约'+passtime+'通过'+exTolls+'收费站，请按照预约时间通行，超过2小时将自动取消</td>';
                 $("#order_tab").append('<tr>'+tr1+'</tr>');
                 $("#order_tab").append('<tr>'+tr2+'</tr>');
@@ -33,3 +33,30 @@ $(function () {
         }
     });
 })
+
+function cancelOrder(oid) {
+    console.log("取消预约的预约单号："+oid);
+    if(confirm("确认取消吗")){
+        $.ajax({
+            url: '/tolls/carorder/delete',
+            datatype: 'json',
+            data: {
+                "orderId":oid
+            },
+            type: 'POST',
+            success: function (data){
+                var lenth = data.errorList.length;
+                if(lenth == 0){
+                    //取消预约成功
+                    var state = data.tradeMap.STATE;
+                    alert(state);
+                    window.location.href='/tolls/user/order.jsp?';
+                }else{
+                    alert(data.errorList[0]);
+                }
+            }
+        });
+    }else{
+        return;
+    }
+}

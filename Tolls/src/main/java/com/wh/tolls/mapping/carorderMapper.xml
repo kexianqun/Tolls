@@ -209,6 +209,6 @@
     select
     <include refid="Base_Column_List" />
     from carorder
-    where userId = #{user_id,jdbcType=INTEGER}
+    where user_id = #{user_id,jdbcType=INTEGER} and checkState ='待审核';
   </select>
 </mapper>

@@ -1,10 +1,9 @@
 package com.wh.tolls.dao;
 
 import com.wh.tolls.entity.carorder;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Component
+
 public interface carorderMapper {
     int deleteByPrimaryKey(Integer orderId);
 

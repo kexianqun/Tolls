@@ -77,6 +77,7 @@ public class UserController {
 		String password = user.getPassword();
 		String md5pass = MD5Util.convertMD5(password);//md5加密密码
 		user.setPassword(md5pass);
+		user.setCredit(100);
 		int a = userService.insert(user);
 		logger.info("注册返回结果："+a);
 		if (a == 1) {

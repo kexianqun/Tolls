@@ -25,7 +25,7 @@ img{max-width:100%;}
 .top {float:right;}
 
 #blank{display:none;}
-table{border:3px;width:750;height:120;cellspacing:0;cellpadding:3;align:center}
+table{border:3px;width:750px;height:120px;cellspacing:0;cellpadding:3;align:center}
 html,body{
 	padding:0;
 	margin:0;
@@ -311,6 +311,6 @@ input[type="submit"] {
 	.personal h2, .information h3, .passport h3 {
     letter-spacing: 1px;
 	    font-size: 24px;
-}
+}}}
 
 /*--//responsive--*/

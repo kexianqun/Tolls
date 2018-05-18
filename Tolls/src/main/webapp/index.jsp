@@ -43,8 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </table>
       <br>
       <hr>
-	
-	
+
 		<form action="#" method="post">
 			<div class="personal">
 			  <div class="main">

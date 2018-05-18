@@ -36,11 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	高速公路绿通车收费站预约通行系统</h1>
       <table class="top" align="right">
        <tr>
-         <td><a href="../index.jsp">首页</a>|</td>
-         <td><a href="../user/login.jsp">用户登录</a>|</td>
-         <td><a href="../user/register.jsp">注册</a>|</td>
-         <td><a href="../user/order.jsp">预约</a>|</td>
-         <td><a href="../manager/login.jsp">历史信息</a></td>
+		   <td><a href="../index.jsp">首页</a>|</td>
+		   <td><a href="../user/order.jsp">预约</a>|</td>
+		   <td><a href="../user/historyInfo.jsp">预约记录</a>|</td>
+		   <td><a href="../user/logout.jsp">退出</a></td>
        </tr>
       </table>
       <div id="blank"></div>
