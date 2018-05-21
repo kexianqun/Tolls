@@ -15,7 +15,7 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, username, password, gender, birthday, address, tel, idNumber, dlNumber, credit
+    user_id, username, password, gender, birthday, address, tel, idNumber, dlNumber, credit,
     deleted
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

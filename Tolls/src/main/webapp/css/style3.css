@@ -25,7 +25,7 @@ img{max-width:100%;}
 .top {float:right;}
 
 #blank{display:none;}
-table{border:3px;width:750px;height:120px;cellspacing:0;cellpadding:3;align:center}
+table{border:3px;width:700px;height:120px;cellspacing:0;cellpadding:3;align:center}
 html,body{
 	padding:0;
 	margin:0;
@@ -84,7 +84,7 @@ body {
 }
   .appointment-w3 {
     width: 52%;
-    height:42%;
+    height:92%;
     margin: 30px auto 30px;
     background-color:#fff;
     padding: 40px 40px;

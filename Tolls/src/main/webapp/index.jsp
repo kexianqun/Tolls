@@ -47,30 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form action="#" method="post">
 			<div class="personal">
 			  <div class="main">
-			   <table border="1" align="center">
-						<tr>
-						  <th><ul><li><a href="">news1</a></li></ul></th>
-						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>
-						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>
-						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>
-						</tr>
-						<tr>
-						   <th><ul><li><a href="">news1</a></li></ul></th>						</tr><tr>
-						 
-						</tr>
-						
-						</table>
-						</div>
+			   	<table border="1" align="center" id="news_tab">
+
+			   	</table>
+			  </div>
 			</div>
 		</form>
 	
@@ -79,6 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- js -->
 	<script type='text/javascript' src='../js/jquery-2.2.3.min.js'></script>
+	<script type='text/javascript' src='../js/index.js'></script>
 	<!--// js -->
 	
 </body>
