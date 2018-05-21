@@ -1,13 +1,12 @@
 package com.wh.tolls.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.wh.tolls.dao.managerMapper;
 import com.wh.tolls.entity.manager;
 import com.wh.tolls.service.ManagerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 @Service
 public class ManagerServiceImpl implements ManagerService{
 
@@ -35,6 +34,12 @@ public class ManagerServiceImpl implements ManagerService{
 	public manager selectByPrimaryKey(Integer managerId) {
 		// TODO Auto-generated method stub
 		return managerMapper.selectByPrimaryKey(managerId);
+	}
+
+	@Override
+	public manager selectByName(String mngName) {
+		// TODO Auto-generated method stub
+		return managerMapper.selectByName(mngName);
 	}
 
 	@Override

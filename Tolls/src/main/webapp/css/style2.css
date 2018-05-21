@@ -195,6 +195,33 @@ input[type="submit"] {
     color: #fff;
     background: #000;
 }
+input[type="button"] {
+    border-radius:0px;
+    text-transform: uppercase;
+    background: #FFC107;
+    color: #000000;
+    padding:11px 15px;
+    border: none;
+    font-size: 17px;
+    outline: none;
+    width: 65%;
+    letter-spacing: 1px;
+    margin:20px 0px;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+input[type="submit"]:hover {
+    color: #fff;
+    background: #000;
+}
+input[type="button"]:hover {
+    color: #fff;
+    background: #000;
+}
 .copy{padding-bottom:30px;}
 .copy p{
     margin:0em;
@@ -304,6 +331,9 @@ h1.header-w3ls {
 input[type="submit"] {
     font-size: 16px;
 }
+    input[type="button"] {
+        font-size: 16px;
+    }
 }
 @media(max-width:767px){
 	textarea {
@@ -385,6 +415,9 @@ h1.header-w3ls {
 	input[type="submit"] {
     margin: 14px 0px;
 	}
+    input[type="button"] {
+        margin: 14px 0px;
+    }
 }
 @media(max-width:414px){
 .appointment-w3 {

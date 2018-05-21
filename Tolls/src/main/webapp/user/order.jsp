@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <head>
 	<title>用户预约 </title>
 	<!-- Meta tags -->
+	 <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Flight Booking Form Responsive Widget, Audio and Video players, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design"
@@ -53,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
       <hr>
 	<div class="appointment-w3">
-		<form action="#" method="post">
+		<form action="#" method="post" enctype="multipart/form-data" id="order_form">
 			<div class="personal">
 				<h2>User Order</h2>
 				
@@ -112,7 +113,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="main">
 
 					<div class="form-left-w3l">
-                        <input name="addPicture" type="file" class="" />
+                        <input name="file" multiple="multiple" type="file" class="" id="add_pic"/>
+
 					</div>
 					<div class="form-right-w3ls ">
 

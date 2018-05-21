@@ -1,30 +1,30 @@
 /**
- * 用户登录
+ * 管理员登录
  */
-function login() {
+function adminLogin() {
     //获取输出框的值
-    var username = $('#username').val();
+    var name = $('#name').val();
     var password = $('#password').val();
-    if(username==null||username==""||username==undefined){
+    if(name==null||name==""||name==undefined){
         alert("请输入用户名");
     }else if(password==null||password==""||password==undefined){
         alert("请输入密码");
     }else{
-        var user = {
-            "username":username,
+        var manager = {
+            "mngname":name,
             "password":password
         }
-        var userJson = JSON.stringify(user);
+        var managerJson = JSON.stringify(manager);
         $.ajax({
-            url: '/tolls/user/login',
+            url: '/tolls/manager/login',
             datatype: 'json',
             contentType: 'application/json;charset=UTF-8',
-            data: userJson,
+            data: managerJson,
             type: 'POST',
             success: function (data){
                 var lenth = data.errorList.length;
                 if(lenth == 0){
-                    window.location.href='/tolls/user/order.jsp';
+                    window.location.href='/tolls/manager/newsRel.jsp';
                 }else{
                     alert(data.errorList[0]);
                 }

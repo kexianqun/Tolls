@@ -52,18 +52,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table>
                         <tr>
                          <td>用户名：</td>
-                         <td><input type="text" class="top-up" name="username" placeholder="username" required=""></td>
+                         <td><input type="text" class="top-up" name="username" placeholder="username" required="" id="name"></td>
                         </tr>
                         <tr>
                          <td>密码：</td>
-                         <td widtth="230"><input type="text" class="top-up" name="password" placeholder="password" required=""></td>
+                         <td widtth="230"><input type="text" class="top-up" name="password" placeholder="password" required="" id="password"></td>
                         </tr>
 						
 					    </table>
 					</div>
 				</div>
 			<div class="btnn">
-				<input type="submit" value="登陆">
+				<input type="button" value="登陆" onclick="adminLogin()">
 			</div>
 			</div>
 		</form>
@@ -73,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- js -->
 	<script type='text/javascript' src='../js/jquery-2.2.3.min.js'></script>
+	<script type='text/javascript' src='../js/adminLogin.js'></script>
 	<!-- //js -->
 	
 </body>

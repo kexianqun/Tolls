@@ -10,8 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -103,6 +106,33 @@ public class CarOrderController {
 			resultMap.addError("取消预约失败");
 		}
 		return resultMap;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = ("/upload"),method = RequestMethod.POST)
+	public void orderDelete(@RequestParam("file") MultipartFile file,
+								 HttpServletRequest request){
+		ResultMap resultMap = new ResultMap();
+		String contentType = file.getContentType();
+		String fileName = file.getOriginalFilename();
+		String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
+		logger.info("文件上传路径："+filePath);
+		try {
+//			uploadFile(file.getBytes(), filePath, fileName);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public static void uploadFile(byte[] file, String filePath, String fileName) throws Exception {
+		File targetFile = new File(filePath);
+		if(!targetFile.exists()){
+			targetFile.mkdirs();
+		}
+		FileOutputStream out = new FileOutputStream(filePath+fileName);
+		out.write(file);
+		out.flush();
+		out.close();
 	}
 	
 }
