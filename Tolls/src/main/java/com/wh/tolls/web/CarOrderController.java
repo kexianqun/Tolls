@@ -50,9 +50,11 @@ public class CarOrderController {
 
     @ResponseBody
 	@RequestMapping("/showByuser")
-	public ResultMap showByuserId(@RequestParam("userid") int userid){
+	public ResultMap showByuserId(@RequestParam(value = "userid") int userid,
+								  @RequestParam(value = "from") int from,
+								  @RequestParam(value = "to") int to){
 		ResultMap resultMap = new ResultMap();
-		List<carorder> carorders = carorderService.selectByUser(userid);
+		List<carorder> carorders = carorderService.selectByUser(userid,from,to);
 		if(carorders.size()>0){
 			logger.info("查询出该用户的预约记录条数："+carorders.size());
 			resultMap.addData("carorder",carorders);
@@ -60,6 +62,16 @@ public class CarOrderController {
 			logger.info("未查询出该用户的预约记录");
 			resultMap.addError("未查询出该用户的预约记录");
 		}
+		return resultMap;
+	}
+
+	@ResponseBody
+	@RequestMapping("/showCount")
+	public ResultMap showCount(@RequestParam(value = "userid") int userid){
+		ResultMap resultMap = new ResultMap();
+		int num = carorderService.selectCount(userid);
+		logger.info("该用户总预约记录条数："+num);
+		resultMap.addData("Count",num);
 		return resultMap;
 	}
 

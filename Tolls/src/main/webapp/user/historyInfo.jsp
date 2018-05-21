@@ -78,6 +78,28 @@ if(user!=null){
 		</table>
 				</div>
 			</div>
+			<div class="pagging">
+				<div class="left">
+					<span id="mNum_span"></span>
+					<span>当前第</span>
+					<span id="curpage_span"></span>
+					<span>页，</span>
+					<span>共</span>
+					<span id="pages_span"></span>
+					<span>页</span>
+				</div>
+				<div class="right">
+					<a href="javascript:void(0)" onclick="previous()">Previous</a>
+					<a href="javascript:void(0)" onclick="firstPage()">1</a>
+					<a href="javascript:void(0)" onclick="secondPage()">2</a>
+					<span>...</span>
+					<a href="javascript:void(0)" onclick="nextPage()">Next</a>
+					<span><label>转到</label>
+                                <input type="text" style="width:50px;" id="turnpage"/>
+                                    <label>页</label></span>
+					<a href="javascript:void(0)" onclick="turnPage()">转</a>
+				</div>
+			</div>
 		</form>
 	</div>
 	<div class="copy">

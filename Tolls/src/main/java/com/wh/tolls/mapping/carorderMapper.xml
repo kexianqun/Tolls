@@ -209,6 +209,11 @@
     select
     <include refid="Base_Column_List" />
     from carorder
-    where user_id = #{user_id,jdbcType=INTEGER} and checkState ='待审核';
+    where user_id = #{user_id,jdbcType=INTEGER} limit #{from},#{to};
   </select>
+
+  <select id="selectCount" resultType="int">
+        select count(1) from carorder
+        where user_id = #{user_id,jdbcType=INTEGER}
+    </select>
 </mapper>

@@ -56,9 +56,15 @@ public class CarOrderServiceImpl implements CarOrderService{
 	}
 
 	@Override
-	public List<carorder> selectByUser(int userId) {
+	public List<carorder> selectByUser(int userId,int from,int to) {
 		// TODO Auto-generated method stub
-		return carorderMapper.selectByUser(userId);
+		return carorderMapper.selectByUser(userId,from,to);
+	}
+
+	@Override
+	public int selectCount(int userid) {
+		// TODO Auto-generated method stub
+		return carorderMapper.selectCount(userid);
 	}
 
 }

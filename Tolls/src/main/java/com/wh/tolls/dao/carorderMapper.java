@@ -1,6 +1,7 @@
 package com.wh.tolls.dao;
 
 import com.wh.tolls.entity.carorder;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface carorderMapper {
     
     List<carorder> selectAll();
 
-    List<carorder> selectByUser(int userId);
+    int selectCount(int user_id);
+
+    List<carorder> selectByUser(@Param("user_id") int userId,@Param("from") int from,@Param("to") int to);
 
 }

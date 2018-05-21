@@ -19,5 +19,7 @@ public interface CarOrderService {
 
     List<carorder> selectAll();
 
-    List<carorder> selectByUser(int userId);
+    int selectCount(int userid);
+
+    List<carorder> selectByUser(int userId,int from , int to);
 }
