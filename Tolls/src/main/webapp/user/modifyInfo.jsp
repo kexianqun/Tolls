@@ -2,23 +2,22 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-	user user = (com.wh.tolls.entity.user) session.getAttribute("user");
-	int userid ;
-	String uid = "";
-	if(user!=null){
-		userid = user.getUserId();
-		uid = String.valueOf(userid);
-	}else{
-		response.sendRedirect(basePath+"/index.jsp");
-	}
+user user = (com.wh.tolls.entity.user) session.getAttribute("user");
+int uid;
+String userid ="";
+if(user!=null){
+    uid = user.getUserId();
+    userid = String.valueOf(uid);
+}else{
+    response.sendRedirect(basePath+"/index.jsp");
+}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
  <head>
-	<title>用户预约 </title>
+	<title>用户信息修改 </title>
 	<!-- Meta tags -->
-	 <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Flight Booking Form Responsive Widget, Audio and Video players, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design"
@@ -40,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-<input type="hidden" id="userid" value="<%=uid%>">
+<input type="hidden" value="<%=userid%>" id="userid">
 	<h1 class="header-w3ls" color="#fff">
 	高速公路绿通车收费站预约通行系统</h1>
       <table align="right">
@@ -55,77 +54,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
       <hr>
 	<div class="appointment-w3">
-		<form action="#" method="post" enctype="multipart/form-data" id="order_form">
+		<form action="#" method="post">
 			<div class="personal">
-				<h2>User Order</h2>
+				<h2>User Info</h2>
 				
 				<div class="main">
 					<div class="form-left-w3l">
 
-						<input type="text" id="username" class="top-up" name="username" placeholder="用户名 " required="">
+						用户名：<input type="text" class="top-up" name="username" placeholder="用户名 userName" required="" id="username">
 						
 					</div>
 					<div class="form-right-w3ls">
 
-						<input type="text" id="plateNumber" class="top-up" name="plateNumber" placeholder="车牌号 " required="">
+						密码：<input type="text" class="top-up" name="password"  required="" id="password">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="main">
+					<div class="form-left-w3l" id="sex">
+						性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;:
+						<input type="radio" name="gender" placeholder="性别 gender" required="" value="男">男
+						<input type="radio" name="gender" placeholder="性别 gender" required="" value="女">女
+					</div>
+					<div class="form-right-w3ls ">
+
+						住址：<input class="text" type="text" name="address" placeholder="住址 address" required="" id="address">
 						<div class="clearfix"></div>
 					</div>
 				</div>
 				
-               <div class="main">
-
-					<div class="form-left-w3l">
-						<select class="form-control" id="intoll">
-							<option value="">入口收费站</option>
-							<option>清河北</option>
-							<option>西三旗</option>
-							<option>上清</option>
-							<option>上清西</option>
-							<option>上清东</option>
-					    </select>
-					</div>
-					<div class="form-right-w3ls">
-						<select class="form-control" id="outtoll">
-							<option value="">出口收费站</option>
-							<option>清河北</option>
-							<option>西三旗</option>
-							<option>上清</option>
-							<option>上清西</option>
-							<option>上清东</option>
-					    </select>
-					</div>
-				</div>
-
-				
+			
 			
 				<div class="main">
 					<div class="form-left-w3l">
-                        <input type="text" id="description" class="top-up" name="description" placeholder="货物描述 " required="">
-
+						生&nbsp;&nbsp;&nbsp;&nbsp;日：<input id="birthday" name="Text" type="text" placeholder="出生日期" required="" id="birthday">
 						<div class="clear"></div>
 					</div>
 					<div class="form-right-w3ls ">
-
-						<input id="passtime" name="passtime" type="text" placeholder="通过时间" required="">
-                        <div class="clear"></div>
+						电话：<input type="text" class="text" name="tel" placeholder="电话 tel" required="" id="telphone">
+						<div class="clearfix"></div>
 					</div>
 				</div>
 				
 				<div class="main">
 
 					<div class="form-left-w3l">
-                        <input name="file" multiple="multiple" type="file" class="" id="add_pic"/>
 
+						身份证：<input type="text" class="text" name="idNumber" placeholder="身份证号 idNumber" required="" id="idno">
 					</div>
 					<div class="form-right-w3ls ">
-
-						<input type="text" id="tel" class="top-up" name="tel" placeholder="电话 " required="">
+						驾照：<input type="text" class="text" name="dlNumber" placeholder="驾照编号 dlNumber" required="" id="dlNumber">
 						<div class="clearfix"></div>
 					</div>
 				</div>
+				
+			<div class="main">
+					<div class="form-left-w3l">
+						信用分：<input type="text" class="text" name="credit" placeholder="信用分" required="" readonly="readonly" id="credit">
+						
+					</div>
+					
+				</div>
 			
 			<div class="btnn">
-				<input type="button" value="预约" onclick="addorder()">
+				<input type="button" value="保存" onclick="save()">
 			</div>
 			</div>
 		</form>
@@ -133,18 +125,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="copy">
 		<p>&copy;高速公路绿通车收费站预约通行系统</p>
 	</div>
-	<!-- //js -->
+	<!-- js -->
 	<script type='text/javascript' src='../js/jquery-2.2.3.min.js'></script>
-    <script type='text/javascript' src='../js/order.js'></script>
-	<!--// js -->
+    <script type='text/javascript' src='../js/modifyInfo.js'></script>
+	<!-- //js -->
 	<!-- Calendar -->
 	<script src="../js/jquery-ui.js"></script>
 	<script>
 		$(function () {
-			$("#passtime,#ordertime,#datepicker2,#datepicker3").datepicker({dateFormat: "yy-mm-dd"});
+            $("#birthday").datepicker({dateFormat: "yy-mm-dd"});
 		});
 	</script>
-	<!-- Calendar -->
+	<!-- //Calendar -->
 	
 
 </body>

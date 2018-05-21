@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="../js/jquery-ui.js"></script>
 	<script>
 		$(function () {
-			$("#datepicker,#datepicker1,#birthday,#datepicker2,#datepicker3").datepicker({dateFormat: "yy-mm-dd"});
+			$("#birthday").datepicker({dateFormat: "yy-mm-dd"});
 		});
 	</script>
 	<!-- //Calendar -->

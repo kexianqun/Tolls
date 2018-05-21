@@ -8,14 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -27,18 +23,62 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/show")
-	public String show() {
-		List<user> list = userService.selectAll();
-		request.getSession().setAttribute("list", list);
-		return "show";
+	//查询
+	@ResponseBody
+	@RequestMapping(value = "/show" , method = RequestMethod.POST)
+	public ResultMap show(@RequestParam("userid") int userid) {
+		ResultMap resultMap = new ResultMap();
+		user user = userService.selectByPrimaryKey(userid);
+		if(user!=null){
+			logger.info("查询成功，用户信息："+user.toString());
+			resultMap.addData("user",user);
+		}else{
+			logger.error("未查询到用户");
+			resultMap.addError("未查询到用户");
+		}
+		return resultMap;
 	}
 
-	@RequestMapping("/del")
-	public String del(int id) {
-		userService.deleteByPrimaryKey(id);
-		show();
-		return "show";
+	//修改
+	@ResponseBody
+	@RequestMapping(value = "/update" , method = RequestMethod.POST)
+	public ResultMap userUpdate(@RequestBody user user) {
+		ResultMap resultMap = new ResultMap();
+		int userid = user.getUserId();
+        String password = user.getPassword();
+        if("".equals(password)||password==null){
+        	//如果没修改密码，还使用原密码
+			user user1 = userService.selectByPrimaryKey(userid);
+			if(user1!=null){
+				String oldpass = user1.getPassword();
+				user.setPassword(oldpass);
+				int i =userService.updateByPrimaryKey(user);
+				if(i==1){
+					logger.info("保存成功");
+					resultMap.addData("STATE","保存成功");
+				}else{
+					logger.error("保存失败");
+					resultMap.addError("保存失败");
+				}
+			}else{
+				logger.error("未查询出该用户信息，无法修改");
+				resultMap.addError("未查询出该用户信息，无法修改");
+			}
+		}else{
+        	String md5pass = MD5Util.convertMD5(password);
+        	user.setPassword(md5pass);
+			int i =userService.updateByPrimaryKey(user);
+			if(i!=1){
+				logger.error("保存失败");
+				resultMap.addError("保存失败");
+
+			}else{
+				logger.info("保存成功");
+				resultMap.addData("STATE","保存成功");
+			}
+		}
+
+		return resultMap;
 	}
 
 	//登录
