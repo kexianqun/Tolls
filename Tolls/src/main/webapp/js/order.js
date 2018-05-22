@@ -44,7 +44,21 @@ function addorder() {
     //         "deleted":deleted
     //     };
     //     var orderJson = JSON.stringify(order);
-        var formData = new FormData($('#order_form')[0]);
+    //     var time = $('#timepicker1').val();
+    //     var index = time.indexOf(":");
+    //     var hour = parseInt(time.substring(0,index));
+    //     var t = time.substring(time.length-2);
+    //     console.log(t+"---"+hour);
+    //     if(t=="AM"){
+    //         time = time.substring(0,time.length-2);
+    //         console.log("AM时间："+time);
+    //     }else{
+    //         var h = 12+hour;
+    //         time = h+""+time.substring(index,time.length-2);
+    //         console.log("PM时间："+time);
+    //     }
+    var formData = new FormData();
+    formData.append('img', $('#file')[0].files[0]);
         console.log(formData);
     //     $.ajax({
     //         url: '/tolls/carorder/insert',
@@ -82,6 +96,8 @@ function addorder() {
     $.ajax({
         url: '/tolls/carorder/upload',
         type: "POST",
+        async: false,
+        cache: false,
         processData: false,
         contentType: false,
         data: formData,
@@ -90,4 +106,66 @@ function addorder() {
         }
     });
 }
+
+//下拉框查询入口收费站
+function getinTolls() {
+    var tolls = $('#intoll').val();
+    if(tolls==""||tolls==null){
+        $.ajax({
+            type: "POST",
+            url: "/tolls/tolls/show",
+            dataType:"json",
+            success: function (data) {
+                var lenth = data.errorList.length;
+                if(lenth != 0){
+                    alert(data.errorList[0]);
+                }else {
+                    //动态增加option
+                    $('#intoll option').not(":first").remove();
+                    var mList = data.tradeMap.tolls;
+                    console.log(mList);
+                    for(i in mList){
+                        var tname = mList[i].tollsname;
+                        var tid = mList[i].tollsId;
+                        var option='<option value ="'+ tid +'">'+ tname +'</option>'
+                        $('#intoll').append(option);
+                    }
+                }
+            }
+        });
+    }
+}
+
+//下拉框查询出口收费站
+function getoutTolls() {
+    var tolls = $('#outtoll').val();
+    if(tolls==""||tolls==null){
+        $.ajax({
+            type: "POST",
+            url: "/tolls/tolls/show",
+            dataType:"json",
+            success: function (data) {
+                var lenth = data.errorList.length;
+                if(lenth != 0){
+                    alert(data.errorList[0]);
+                }else {
+                    //动态增加option
+                    $('#outtoll option').not(":first").remove();
+                    var mList = data.tradeMap.tolls;
+                    for(i in mList){
+                        var tname = mList[i].tollsname;
+                        var tid = mList[i].tollsId;
+                        var option='<option value ="'+ tid +'">'+ tname +'</option>'
+                        $('#outtoll').append(option);
+                    }
+                }
+            }
+        });
+    }
+}
+
+$(function () {
+    getinTolls();
+    getoutTolls();
+})
 

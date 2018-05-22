@@ -1,30 +1,27 @@
 package com.wh.tolls.web;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.wh.tolls.entity.Result;
 import com.wh.tolls.entity.tolls;
 import com.wh.tolls.log.LogOperator;
 import com.wh.tolls.service.TollsService;
+import com.wh.tolls.util.ResultMap;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/tolls")
 public class TollsController {
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	private final String ENTITY_NAME = tolls.ENTITY_DISPLAY_NAME;
 	@Autowired
@@ -34,20 +31,20 @@ public class TollsController {
 	TollsService tollsService;
 	
 	private final String loggerName = this.getClass().getName();
-	
+
+	@ResponseBody
 	@RequestMapping("/show")
-	public String show(){
-		List<tolls> list = tollsService.selectAll();
-		request.getSession().setAttribute("list", list);
-		return "show";
+	public ResultMap show(){
+		ResultMap resultMap = new ResultMap();
+		List<tolls> tolls = tollsService.selectAll();
+		if(tolls.size()!=0){
+			logger.info("查询出全部收费站数量："+tolls.size());
+			resultMap.addData("tolls",tolls);
+		}
+		return resultMap;
 	}
 	
-	@RequestMapping("/del")
-	public String del(int id){
-		tollsService.deleteByPrimaryKey(id);
-		show();
-		return "show";
-	}
+
 
 	@ApiOperation(value = "查询单个" + ENTITY_NAME, notes = "通过ID查询" + ENTITY_NAME +"详细信息")
 	@ResponseBody

@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
       <hr>
 	<div class="appointment-w3">
-		<form action="#" method="post" enctype="multipart/form-data" id="order_form">
+		<form action="" method="post" enctype="multipart/form-data" id="order_form" name="order_form">
 			<div class="personal">
 				<h2>User Order</h2>
 				
@@ -75,23 +75,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <div class="main">
 
 					<div class="form-left-w3l">
-						<select class="form-control" id="intoll">
-							<option value="">入口收费站</option>
-							<option>清河北</option>
-							<option>西三旗</option>
-							<option>上清</option>
-							<option>上清西</option>
-							<option>上清东</option>
+						<select class="form-control" id="intoll" >
+                            <option value="">入口收费站</option>
 					    </select>
 					</div>
 					<div class="form-right-w3ls">
-						<select class="form-control" id="outtoll">
+						<select class="form-control" id="outtoll" >
 							<option value="">出口收费站</option>
-							<option>清河北</option>
-							<option>西三旗</option>
-							<option>上清</option>
-							<option>上清西</option>
-							<option>上清东</option>
 					    </select>
 					</div>
 				</div>
@@ -106,22 +96,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="form-right-w3ls ">
 
-						<input id="passtime" name="passtime" type="text" placeholder="通过时间" required="">
-                        <div class="clear"></div>
-					</div>
-				</div>
-				
-				<div class="main">
-
-					<div class="form-left-w3l">
-                        <input name="file" multiple="multiple" type="file" class="" id="add_pic"/>
-
-					</div>
-					<div class="form-right-w3ls ">
-
 						<input type="text" id="tel" class="top-up" name="tel" placeholder="电话 " required="">
 						<div class="clearfix"></div>
 					</div>
+
+				</div>
+				
+				<div class="main">
+					<div class="form-left-w3l">
+						<%--<input name="file" multiple="multiple" type="file" class="" id="add_pic"/>--%>
+						<input type ="file" name="file" id="file" multiple="multiple"/>
+					</div>
+					<div class="form-right-w3ls ">
+
+						<input id="passtime" name="passtime" type="text" placeholder="通过日期" required="">
+						<input type="text" id="timepicker1" name="Time" class="timepicker1 form-control hasWickedpicker" placeholder="通过时间" required=""
+							   onkeypress="return false;" style="width: 250px">
+						<div class="clear"></div>
+					</div>
+
 				</div>
 			
 			<div class="btnn">
@@ -135,6 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- //js -->
 	<script type='text/javascript' src='../js/jquery-2.2.3.min.js'></script>
+    <script type="text/javascript" src="../js/wickedpicker.js"></script>
     <script type='text/javascript' src='../js/order.js'></script>
 	<!--// js -->
 	<!-- Calendar -->
@@ -142,6 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script>
 		$(function () {
 			$("#passtime,#ordertime,#datepicker2,#datepicker3").datepicker({dateFormat: "yy-mm-dd"});
+            $('.timepicker1').wickedpicker({ twentyFour: false });
 		});
 	</script>
 	<!-- Calendar -->

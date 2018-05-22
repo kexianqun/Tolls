@@ -122,17 +122,23 @@ public class CarOrderController {
 
 	@ResponseBody
 	@RequestMapping(value = ("/upload"),method = RequestMethod.POST)
-	public void orderDelete(@RequestParam("file") MultipartFile file,
+	public void orderDelete(@RequestParam("file") List<MultipartFile> files ,
 								 HttpServletRequest request){
 		ResultMap resultMap = new ResultMap();
-		String contentType = file.getContentType();
-		String fileName = file.getOriginalFilename();
-		String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-		logger.info("文件上传路径："+filePath);
-		try {
-//			uploadFile(file.getBytes(), filePath, fileName);
-		} catch (Exception e) {
-			// TODO: handle exception
+		logger.info("++++++++++++"+files.size());
+		if(files.size()>0){
+			for(int i=0;i<files.size();i++){
+				MultipartFile file = files.get(i);
+				String contentType = file.getContentType();
+				String fileName = file.getOriginalFilename();
+				String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
+				logger.info("文件上传路径："+filePath);
+				try {
+					uploadFile(file.getBytes(), filePath, fileName);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
 		}
 	}
 
