@@ -73,7 +73,7 @@ function addorder() {
                     console.log(order);
                     var oid = order.orderId;
                     alert("预约成功");
-                    // window.location.href='/tolls/user/orderXQ.jsp?'+'txt='+oid;
+                    window.location.href='/tolls/user/orderXQ.jsp?'+'txt='+oid;
                 }else{
                     alert(data.errorList[0]);
                 }
